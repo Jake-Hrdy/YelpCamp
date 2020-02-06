@@ -20,7 +20,8 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-//mongoose.connect("mongodb://localhost/yelp_camp");	// local database
+//mongoose.connect("mongodb://localhost/yelp_camp");	// local MongoDB
+
 // MongoDB Atlas
 mongoose.connect("mongodb+srv://jakehardy:AsasDfdf13@cluster0-ljekj.mongodb.net/test?retryWrites=true&w=majority").then(() => {
 	console.log("Connected to DB!");
@@ -59,6 +60,7 @@ passport.deserializeUser(User.deserializeUser());
 // seed database on start up
 // seedDB();
 
-app.listen(3000, function() {
-	console.log("The YelpCamp server has started.");
-});
+app.listen(process.env.PORT, process.env.IP);
+// app.listen(3000, function() {
+// 	console.log("The YelpCamp server has started.");
+// });
