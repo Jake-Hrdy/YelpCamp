@@ -20,7 +20,13 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
-mongoose.connect("mongodb://localhost/yelp_camp");
+//mongoose.connect("mongodb://localhost/yelp_camp");	// local database
+// MongoDB Atlas
+mongoose.connect("mongodb+srv://jakehardy:AsasDfdf13@cluster0-ljekj.mongodb.net/test?retryWrites=true&w=majority").then(() => {
+	console.log("Connected to DB!");
+}).catch(err => {
+	console.log("ERROR: ", err.message);
+});
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
