@@ -56,6 +56,3 @@ passport.deserializeUser(User.deserializeUser());
 // seedDB();
 
 app.listen(process.env.PORT || 3000, process.env.IP);
-// app.listen(3000, function() {
-// 	console.log("The YelpCamp server has started.");
-// });
