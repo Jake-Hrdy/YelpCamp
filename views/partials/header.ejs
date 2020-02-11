@@ -12,6 +12,11 @@
 				<a class="navbar-brand" href="/">YelpCamp</a>
 			</div>
 			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/campgrounds">Home</a></li>
+					<!-- Add about page later -->
+					<li><a href="#">About</a></li>
+				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<% if (!currentUser) { %>
 						<li><a href="/login">Log In</a></li>
