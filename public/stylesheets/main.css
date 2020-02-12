@@ -13,3 +13,12 @@
 .deleteForm {
 	display: inline;
 }
+
+.container {
+	padding-top: 20px;
+}
+
+.alert {
+	margin-bottom: 0rem;
+	border-radius: 0rem;
+}

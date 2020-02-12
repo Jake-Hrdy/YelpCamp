@@ -1,9 +1,9 @@
 <%- include("partials/header") %>
 
 <div class="container">
+	<h1 class="text-center" style="margin: auto;">Login</h1>
 	<div class="row">
-		<h1 class="text-center" style="margin: auto;">Login</h1>
-		<div style="width: 30%; margin: 40px auto;">
+		<div class="col-9 col-sm-8 col-md-6 col-lg-5 col-xl-4" style="margin: 20px auto;">
 			<form action="/login" method="POST">
 				<div class="form-group">
 					<input class="form-control" type="text" name="username" placeholder="Username">
@@ -16,5 +16,7 @@
 		</div>
 	</div>
 </div>
+
+<div class="col-md-3 col-sm-6">
 
 <%- include("partials/footer") %>
