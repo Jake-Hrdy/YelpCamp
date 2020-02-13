@@ -2,24 +2,21 @@
 
 <div class="container">
 	<header class="jumbotron">
-		<h1>Welcome to YelpCamp!</h1>
-		<p>View our hand-picked campgrounds from all over the world</p>
-		<p>
-			<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
-		</p>
+		<h1 class="display-4">Welcome to YelpCamp!</h1>
+		<p class="lead">View our hand-picked campgrounds from all over the world</p>
+		<hr>
+		<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
 	</header>
 
-	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+	<div class="row text-center">
 		<% campgrounds.forEach(function(campground) { %>
 			<div class="col-lg-3 col-sm-6">
-				<div class=thumbnail>
-					<img src="<%= campground.image %>">
-					<div class="caption">
-						<h4><%= campground.name %></h4>
-					</div>
-					<p>
+				<div class="card mb-3">
+					<img class="card-img-top" src="<%= campground.image %>">
+					<div class="card-body">
+						<h4 class="card-title"><%= campground.name %></h4>
 						<a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">More Info</a>
-					</p>
+					</div>
 				</div>
 			</div>
 		<% }); %>
