@@ -9,7 +9,7 @@
 				<a href="#" class="list-group-item list-group-item-action">Reviews</a>
 				<a href="#" class="list-group-item list-group-item-action">Contact</a>
 			</div>
-			<!-- map will go here eventually -->
+			<div id="map" class="mt-3"></div>
 		</div>
 		
 		<div class="col-md-9">
@@ -34,7 +34,6 @@
 					</div>
 				<% } %>
 			</div>
-			
 			
 			<div class="card mt-3 mb-3">
 				<div class="card-header">
@@ -71,5 +70,34 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  function initMap() {
+    var lat = <%= campground.lat %>;
+    var lng = <%= campground.lng %>;
+    var center = {lat: lat, lng: lng };
+    var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false
+    });
+    var contentString = `
+      <strong><%= campground.name %><br />
+      <%= campground.location %></strong>
+      <p><%= campground.description %></p>
+    `
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+    var marker = new google.maps.Marker({
+        position: center,
+        map: map
+    });
+    marker.addListener("click", function() {
+      infowindow.open(map, marker);
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu_fK5mVm9byUzRfbt2hhVQvjVYKrFbcY&callback=initMap"></script>
 
 <%- include("../partials/footer") %>
