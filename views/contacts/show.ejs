@@ -1,0 +1,56 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+	<div class="jumbotron">
+		<h1 class="display-4"><%= campground.name %> Contacts</h1>
+		<% if (campground.contacts.length == 0) { %>
+			<p class="lead">
+				There are no contacts for <%= campground.name %>
+			</p>
+			<hr class="my-4">
+		<% } else { %>
+			<p class="lead">
+				Contact information for <%= campground.name %>
+			</p>
+			<hr class="my-4">
+		<% } %>
+		<% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
+			<a href="/campgrounds/<%= campground._id %>/contacts/new" class="btn btn-lg btn-primary mb-3" role="button">
+				Add Contact
+			</a>
+		<% } %>
+	</div>
+	
+	<div class="row">
+		<% campground.contacts.forEach(function(contact) { %>
+			<div class="col-lg-6">
+				<div class="card mb-3" style="max-width: 540px; margin: auto;">
+					<div class="row no-gutters">
+						<div class="col-4">
+							<img class="card-img" src="<%= contact.image %>">
+						</div>
+						<div class="col-8">
+							<div class="card-body">
+								<h3 class="card-title"><%= contact.name %></h3>
+								<p class="card-text"><strong>Title</strong>: <em><%= contact.title %></em></p>
+								<p class="card-text"><strong>Email</strong>: <em><%= contact.email %></em></p>
+								<p class="card-text"><strong>Phone</strong>: <em><%= contact.phoneNumber %></em></p>
+								<% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
+									<a href="/campgrounds/<%= campground._id %>/contacts/<%= contact._id %>/edit" 
+									   class="btn btn-sm btn-warning">Edit</a>
+									<form class="deleteForm"
+										  action="/campgrounds/<%= campground._id %>/contacts/<%= contact._id %>?_method=DELETE"
+										  method="POST">
+										<button class="btn btn-sm btn-danger">Delete</button>
+									</form>		
+								<% } %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% }); %>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

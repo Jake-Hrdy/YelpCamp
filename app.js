@@ -16,7 +16,8 @@ const express			= require("express"),
 // requiring routes
 const campgroundRoutes	= require("./routes/campgrounds"),
 	  commentRoutes 	= require("./routes/comments"),
-	  indexRoutes		= require("./routes/index");
+	  indexRoutes		= require("./routes/index"),
+	  contactRoutes		= require("./routes/contacts");
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -48,6 +49,7 @@ app.use(function(req, res, next) {
 
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds/:id/contacts", contactRoutes);
 app.use("/", indexRoutes);
 
 passport.use(new LocalStrategy(User.authenticate()));
