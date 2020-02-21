@@ -5,17 +5,21 @@
 		<h1 class="display-4">YelpCamp Campgrounds</h1>
 		<p class="lead">View our hand-picked campgrounds from all over the world</p>
 		<hr>
-		<a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+		<a class="btn btn-outline-dark btn-lg" href="/campgrounds/new">Add New Campground</a>
 	</header>
 
 	<div class="row text-center">
 		<% campgrounds.forEach(function(campground) { %>
 			<div class="col-lg-3 col-sm-6">
-				<div class="card mb-3">
+				<div class="card mb-3 bg-dark">
 					<img class="card-img-top" src="<%= campground.image %>">
 					<div class="card-body">
-						<h4 class="card-title"><%= campground.name %></h4>
-						<a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">More Info</a>
+						<h4 class="text-light card-title"><%= campground.name %></h4>
+						<a class="text-light btn btn-outline-light" href="/campgrounds/<%= campground._id %>">
+							<span class="more-info">
+								More Info
+							</span>
+						</a>
 					</div>
 				</div>
 			</div>

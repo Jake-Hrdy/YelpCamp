@@ -2,23 +2,22 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-3 mb-3">
-			<p class="lead"><%= campground.name %></p>
+		<div class="col-md-4 mb-3">
 			<div class="list-group">
 				<a href="/campgrounds/<%= campground._id %>" 
-				   class="list-group-item list-group-item-action active">Overview</a>
+				   class="list-group-item list-group-item-action list-group-item-dark">Overview</a>
 				<a href="/campgrounds/<%= campground._id %>/contacts"
 				   class="list-group-item list-group-item-action">Contacts</a>
 			</div>
 			<div id="map" class="mt-3"></div>
 		</div>
 		
-		<div class="col-md-9">
-			<div class="card">
+		<div class="col-md-8">
+			<div class="card bg-dark text-light">
 				<img class="card-img-top" src="<%= campground.image %>">
 				<div class="card-body">
 					<h5 class="float-right">$<%= campground.price %>/night</h5>
-					<h4 class="card-title"><a href="#"><%= campground.name %></a></h4>
+					<h4 class="card-title"><a class="go-back" href="#"><%= campground.name %></a></h4>
 					<div class="float-right">
 						<% if (rating) { %>
 							<% for(var i = 0; i < 5; i++) { %>
@@ -32,7 +31,7 @@
 					</div>
 					<p class="card-text"><%= campground.description %></p>
 					<p class="card-text">
-						<small class="text-muted">Submitted By <%= campground.author.username %></small>
+						<small>Submitted By <%= campground.author.username %></small>
 					</p>
 				</div>
 				<% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
@@ -48,8 +47,8 @@
 			</div>
 			
 			<div class="card mt-3 mb-3">
-				<div class="card-header">
-					<a class="btn btn-success float-right"
+				<div class="bg-dark text-light card-header">
+					<a class="btn btn-outline-light float-right"
 					   href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
 				</div>
 				<div class="card-body">

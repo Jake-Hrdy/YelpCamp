@@ -1,9 +1,40 @@
-.thumbnail img {
+body {
+	font-family: "Abel";
+	
+	/* Location of the image */
+	background-image: url("https://images4.alphacoders.com/797/thumb-1920-797952.jpg");
+	
+	/* Background image is centered vertically and horizontally at all times */
+	background-position: center;
+  
+  	/* Background image doesn't tile */
+	background-repeat: no-repeat;
+  
+  	/* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+	background-attachment: fixed;
+  
+  	/* This is what makes the background image rescale based
+     on the container's size */
+	background-size: cover;
+  
+  	/* Set a background color that will be displayed
+     while the background image is loading */
+	background-color: #464646;
+}
+
+/* Google Maps */
+#map {
+	height: 400px;
 	width: 100%;
 }
 
 .thumbnail {
 	padding: 0;
+}
+
+.thumbnail img {
+	width: 100%;
 }
 
 .thumbnail .caption-full {
@@ -21,10 +52,41 @@
 .alert {
 	margin-bottom: 0rem;
 	border-radius: 0rem;
+	z-index: 50;
 }
 
-/* Google Maps */
-#map {
-	height: 400px;
-	width: 100%;
+.navbar {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.navbar-dark .navbar-brand {
+	color: #a85e00;
+	font-size: 2.0em;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	color: #F8F8FF;
+	font-size: 1.4em;
+}
+
+.jumbotron {
+	background-color: #F8F8FF;
+	color: #1a0d00;
+}
+
+.more-info {
+	color: #a85e00 ;
+}
+
+.btn-submit {
+	background-color: #a85e00;
+}
+
+.go-back {
+	color: white;
+}
+
+.go-back:hover {
+	color: #e64000;
 }

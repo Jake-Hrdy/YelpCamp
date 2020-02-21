@@ -15,7 +15,8 @@
 			<hr class="my-4">
 		<% } %>
 		<% if (currentUser && campground.author.id.equals(currentUser._id)) { %>
-			<a href="/campgrounds/<%= campground._id %>/contacts/new" class="btn btn-lg btn-primary mb-3" role="button">
+			<a href="/campgrounds/<%= campground._id %>/contacts/new"
+			   class="btn btn-lg btn-outline-dark mb-3" role="button">
 				Add Contact
 			</a>
 		<% } %>
@@ -24,7 +25,7 @@
 	<div class="row">
 		<% campground.contacts.forEach(function(contact) { %>
 			<div class="col-lg-6">
-				<div class="card mb-3" style="max-width: 540px; margin: auto;">
+				<div class="card bg-dark text-light mb-3" style="max-width: 540px; margin: auto;">
 					<div class="row no-gutters">
 						<div class="col-4">
 							<img class="card-img" src="<%= contact.image %>">
