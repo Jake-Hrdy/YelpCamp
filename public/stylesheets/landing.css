@@ -1,5 +1,6 @@
 body {
 	background-color: #000;
+	font-family: "Abel";
 }
 
 #landing-header {
@@ -11,6 +12,10 @@ body {
 
 #landing-header h1 {
   color: #fff;
+}
+
+.btn-submit {
+	background-color: #a85e00;
 }
 
 .slideshow { 
