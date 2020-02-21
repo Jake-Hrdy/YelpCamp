@@ -19,6 +19,17 @@
 				<div class="card-body">
 					<h5 class="float-right">$<%= campground.price %>/night</h5>
 					<h4 class="card-title"><a href="#"><%= campground.name %></a></h4>
+					<div class="float-right">
+						<% if (rating) { %>
+							<% for(var i = 0; i < 5; i++) { %>
+								<% if (i < rating) { %>
+									<i class="fa fa-star" aria-hidden="true"></i>
+								<% } else { %>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								<% } %>
+							<% } %>
+						<% } %>
+					</div>
 					<p class="card-text"><%= campground.description %></p>
 					<p class="card-text">
 						<small class="text-muted">Submitted By <%= campground.author.username %></small>
@@ -46,9 +57,19 @@
 						<% campground.comments.forEach(function(comment) { %>
 							<li class="list-group-item">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-12">	
 										<strong><%= comment.author.username %></strong>
-										<p class="text-muted float-right">10 days ago</p>
+										<div class="float-right">
+											<% if (comment.rating) { %>
+												<% for(var i = 0; i < 5; i++) { %>
+													<% if (i < comment.rating) { %>
+														<i class="fa fa-star" aria-hidden="true"></i>
+													<% } else { %>
+														<i class="fa fa-star-o" aria-hidden="true"></i>
+													<% } %>
+												<% } %>
+											<% } %>
+										</div>
 										<p class="card-text"><%= comment.text %></p>
 										<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
 											<a class="btn btn-sm btn-warning" 

@@ -26,6 +26,9 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
 				if (err) {
 					req.flash("error", "Something went wrong");
 					console.log(err);
+				} else if (comment.rating < 1 || comment.rating > 5) {
+					req.flash("error", "Rating has to be between 1 and 5");
+					res.redirect("/campgrounds/" + req.params.id + "/comments/new");
 				} else {
 					// add username and id to comment
 					comment.author.id = req.user._id;
@@ -61,6 +64,11 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
 
 // comments update route
 router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res) {
+	if (req.body.comment.rating < 1 || req.body.comment.rating > 5) {
+		req.flash("error", "Rating has to be between 1 and 5");
+		return res.redirect("/campgrounds/" + req.params.id + "/comments/" + req.params.comment_id + "/edit");
+	}
+	
 	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment) {
 		if (err) {
 			res.redirect("back");

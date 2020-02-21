@@ -68,7 +68,16 @@ router.get("/:id", function(req, res) {
 			req.flash("error", "Campground not found");
 			res.redirect("back");
 		} else {
-			res.render("campgrounds/show", {campground: foundCampground});
+			var ratings = 0;
+			var numOfRatings = 0;
+			foundCampground.comments.forEach(function(comment) {
+				if (comment.rating > 0) {
+					ratings += comment.rating;
+					numOfRatings += 1;
+				}
+			});
+			var rating = Math.round(ratings/numOfRatings);
+			res.render("campgrounds/show", {campground: foundCampground, rating: rating});
 		}
 	});
 });
