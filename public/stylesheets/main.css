@@ -61,7 +61,7 @@ body {
 }
 
 .navbar-dark .navbar-brand {
-	color: #a85e00;
+	color: yellow;
 	font-size: 2.0em;
 }
 
@@ -76,11 +76,11 @@ body {
 }
 
 .more-info {
-	color: #a85e00 ;
+	color: yellow;
 }
 
 .btn-submit {
-	background-color: #a85e00;
+	background-color: #374048;
 }
 
 .go-back {
@@ -88,5 +88,13 @@ body {
 }
 
 .go-back:hover {
-	color: #e64000;
+	color: yellow;
+}
+
+.navbar-dark .navbar-nav .nav-item .nav-link:hover {
+	color: yellow;
+}
+
+.show-info .list-group-item:hover {
+	background-color: yellow;
 }
