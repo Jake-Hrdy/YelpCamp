@@ -17,19 +17,23 @@
 				<img class="card-img-top" src="<%= campground.image %>">
 				<div class="card-body">
 					<h5 class="float-right">$<%= campground.price %>/night</h5>
-					<h4 class="card-title"><a class="go-back" href="#"><%= campground.name %></a></h4>
-					<div class="float-right">
-						<% if (rating) { %>
-							<% for(var i = 0; i < 5; i++) { %>
-								<% if (i < rating) { %>
-									<i class="fa fa-star" aria-hidden="true"></i>
-								<% } else { %>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
+					<h4 class="card-title">
+						<a class="go-back" href="<%= campground.website %>"><%= campground.name %></a>
+					</h4>
+					<div class="row">
+						<p class="card-text col-lg-9 col-xl-10"><%= campground.description %></p>
+						<div class="col-lg-3 col-xl-2">
+							<% if (rating) { %>
+								<% for(var i = 0; i < 5; i++) { %>
+									<% if (i < rating) { %>
+										<i class="fa fa-star" aria-hidden="true"></i>
+									<% } else { %>
+										<i class="fa fa-star-o" aria-hidden="true"></i>
+									<% } %>
 								<% } %>
 							<% } %>
-						<% } %>
+						</div>
 					</div>
-					<p class="card-text"><%= campground.description %></p>
 					<p class="card-text">
 						<small>Submitted By <%= campground.author.username %></small>
 					</p>

@@ -26,34 +26,37 @@ router.get("/", function(req, res) {
 
 // create - add new campground to DB
 router.post("/", middleware.isLoggedIn, function(req, res){
-  // get data from form and add to campgrounds array
-  var name = req.body.name;
-  var image = req.body.image;
-  var description = req.body.description;
-  var author = {
-      id: req.user._id,
-      username: req.user.username
-  }
-  geocoder.geocode(req.body.location, function (err, data) {
-	  if (err || !data.length) {
-		  req.flash("error", "Invalid address");
-		  return res.redirect("back");
-	  }
-	  var lat = data[0].latitude;
-	  var lng = data[0].longitude;
-	  var location = data[0].formattedAddress;
-	  var newCampground = {name: name, image: image, description: description, author:author, location: location, lat: lat, lng: lng};
-    // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else {
-            //redirect back to campgrounds page
-            console.log(newlyCreated);
-            res.redirect("/campgrounds");
-        }
-    });
-  });
+	// get data from form and add to campgrounds array
+	var name = req.body.name;
+	var image = req.body.image;
+	var description = req.body.description;
+	var price = req.body.price;
+	var website = req.body.website;
+	var author = {
+		id: req.user._id,
+		username: req.user.username
+	}
+	geocoder.geocode(req.body.location, function (err, data) {
+		if (err || !data.length) {
+			req.flash("error", "Invalid address");
+			return res.redirect("back");
+		}
+		var lat = data[0].latitude;
+		var lng = data[0].longitude;
+		var location = data[0].formattedAddress;
+		var newCampground = {name: name, image: image, description: description, price: price, website: website,
+							 author:author, location: location, lat: lat, lng: lng};
+		// Create a new campground and save to DB
+		Campground.create(newCampground, function(err, newlyCreated){
+			if(err){
+				console.log(err);
+			} else {
+				//redirect back to campgrounds page
+				console.log(newlyCreated);
+				res.redirect("/campgrounds");
+			}
+		});
+	});
 });
 
 // new - show form to create new campground
@@ -116,6 +119,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res) {
 	Campground.findByIdAndRemove(req.params.id, function(err) {
 		if (err) {
+			req.flash("error", err.message);
 			res.redirect("/campgrounds");
 		} else {
 			res.redirect("/campgrounds");
