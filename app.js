@@ -56,7 +56,4 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// seed database on start up
-// seedDB();
-
 app.listen(process.env.PORT || 3000, process.env.IP);
