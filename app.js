@@ -10,8 +10,7 @@ const express			= require("express"),
 	  methodOverride	= require("method-override"),
 	  Campground 		= require("./models/campground"),
 	  Comment			= require("./models/comment"),
-	  User				= require("./models/user"),
-	  seedDB 			= require("./seeds");
+	  User				= require("./models/user");
 
 // requiring routes
 const campgroundRoutes	= require("./routes/campgrounds"),
