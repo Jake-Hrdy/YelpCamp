@@ -38,7 +38,22 @@ router.post("/", middleware.isLoggedIn, middleware.checkCampgroundOwnership, fun
 				if (err || !contact) {
 					req.flash("error", "Could not create contact");
 				} else {
-					// contact.save();
+					if (contact.image == "") {
+						contact.image = "https://www.mywardrobehq.com/assets/images/profiles/no-image.png";
+					}
+					if (contact.name == "") {
+						contact.name = "No Name Given";
+					}
+					if (contact.title == "") {
+						contact.title = "No Title Given";
+					}
+					if (contact.email == "") {
+						contact.email = "No Email Given";
+					}
+					if (contact.phoneNumber == "") {
+						contact.phoneNumber = "No Number Given";
+					}
+					contact.save();
 					foundCampground.contacts.push(contact);
 					foundCampground.save();
 					req.flash("success", "Contact has been added successfully");
@@ -70,6 +85,22 @@ router.get("/:contact_id/edit", middleware.isLoggedIn, middleware.checkCampgroun
 
 // contacts UPDATE route
 router.put("/:contact_id", middleware.isLoggedIn, middleware.checkCampgroundOwnership, function(req, res) {
+	if (req.body.contact.image == "") {
+		req.body.contact.image = "https://www.mywardrobehq.com/assets/images/profiles/no-image.png";
+	}
+	if (req.body.contact.name == "") {
+		req.body.contact.name = "No Name Given";
+	}
+	if (req.body.contact.title == "") {
+		req.body.contact.title = "No Title Given";
+	}
+	if (req.body.contact.email == "") {
+		req.body.contact.email = "No Email Given";
+	}
+	if (req.body.contact.phoneNumber == "") {
+		req.body.contact.phoneNumber = "No Number Given";
+	
+	}
 	Contact.findByIdAndUpdate(req.params.contact_id, req.body.contact, function(err, foundContact) {
 		if (err) {
 			req.flash("error", "Could not update contact");
